@@ -1,0 +1,63 @@
+* { box-sizing: border-box; }
+:root {
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: #f8fafc;
+}
+body { margin: 0; min-height: 100vh; padding: 22px 14px 32px; }
+.app { width: min(960px, 100%); margin: 0 auto; }
+.top { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 16px; }
+.eyebrow { margin: 0 0 4px; color: #7dd3fc; font-size: .72rem; letter-spacing: .2em; font-weight: 800; }
+h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.25rem); }
+.score-panel { display: flex; gap: 18px; }
+.score-panel div { min-width: 62px; text-align: right; }
+.score-panel span { display: block; color: #94a3b8; font-size: .75rem; }
+.score-panel strong { font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.game-wrap {
+  position: relative; width: 100%; overflow: hidden; border: 1px solid #334155;
+  border-radius: 18px; background: #111827; box-shadow: 0 18px 60px #0006;
+}
+canvas { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; touch-action: none; }
+.overlay {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  padding: 16px; background: #020617a8; backdrop-filter: blur(4px);
+}
+.overlay.hidden { display: none; }
+.overlay-card {
+  width: min(390px, 100%); padding: 26px 22px; text-align: center;
+  border: 1px solid #475569; border-radius: 18px; background: #172033ed;
+}
+.overlay-card h2 { margin: 0 0 8px; font-size: 1.6rem; }
+.overlay-card p { margin: 0 0 20px; color: #cbd5e1; line-height: 1.6; }
+button {
+  border: 0; border-radius: 12px; padding: 12px 20px; font: inherit;
+  font-weight: 750; color: #082f49; background: #7dd3fc; cursor: pointer;
+  touch-action: manipulation;
+}
+button:active { transform: translateY(1px); }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+.controls p { margin: 0; color: #cbd5e1; font-size: .9rem; }
+.mobile-help { display: none; }
+.touch-buttons { display: none; gap: 12px; }
+.move-button { min-width: 68px; min-height: 52px; font-size: 1.25rem; }
+.secondary { padding: 10px 15px; color: #e2e8f0; background: #334155; }
+.footnote { margin: 12px 0 0; color: #64748b; font-size: .78rem; }
+@media (max-width: 640px) {
+  body { padding: 14px 10px 24px; }
+  .top { align-items: center; }
+  .score-panel { gap: 12px; }
+  .desktop-help { display: none; }
+  .mobile-help { display: block; width: 100%; }
+  .controls { justify-content: center; }
+  .touch-buttons { display: flex; }
+  .secondary { margin-left: auto; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  body { padding: 6px 12px; }
+  .top { margin-bottom: 6px; }
+  h1 { font-size: 1.25rem; }
+  .game-wrap { width: min(82vh, 100%); margin: 0 auto; }
+  .controls { margin-top: 5px; }
+  .footnote { display: none; }
+}
